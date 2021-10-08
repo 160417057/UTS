@@ -26,7 +26,7 @@ class ListViewModel:ViewModel() {
 
         dokterLD.value = arrayListOf<Dokter>(dokter1,dokter2,dokter3)
         loadingErrorLD.value = false
-        loadingLD.value = true
+        loadingLD.value = false
 
         //queue = Volley.newRequestQueue()
     }

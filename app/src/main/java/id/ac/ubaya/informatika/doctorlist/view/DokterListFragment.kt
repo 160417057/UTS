@@ -1,6 +1,7 @@
 package id.ac.ubaya.informatika.doctorlist.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,8 @@ class DokterListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dokter_list, container, false)
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,22 +45,23 @@ class DokterListFragment : Fragment() {
             dokterListAdapter.updateDokterlist(it)
         })
 
-        viewModel.loadingErrorLD.observe(viewLifecycleOwner, Observer {
+       viewModel.loadingErrorLD.observe(viewLifecycleOwner, Observer {
             if (it) {
-                txtError.visibility = View.VISIBLE
+               txtError.visibility = View.VISIBLE
             } else{
-                txtError.visibility = View.GONE
-            }
+               txtError.visibility = View.GONE
+           }
         })
 
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
+            Log.d("error",it.toString())
             if (it){
                 progressLoad.visibility = View.VISIBLE
                 recView.visibility = View.GONE
             } else{
                 progressLoad.visibility = View.GONE
                 recView.visibility = View.VISIBLE
-            }
+           }
         })
     }
 }
